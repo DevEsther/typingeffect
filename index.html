@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auto typing</title>
+    <link rel="stylesheet" href="./autotypin.css">
+</head>
+<body>
+    <center>
+        <div style="font-size: 40px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">JS TYPING EFFECT</div>
+    <div class="container">
+        
+        <h1 class="typing" id="Autotype"></h1>
+        <div class="new" id="new"></div>
+    </div>
+</center>
+    
+</body>
+<script>
+    let n =document.getElementById('new')
+    alert('new')
+
+    let charIndex  =0
+    console.log(charIndex);
+    let sentenceIndex=0
+    console.log(sentenceIndex);
+
+    const contentArray=[" Hey, MY Name is Esther","i`m a frontend developer",
+    "i study at sqi iworoad campus", 'currently learning javascript',
+    'javscript is an intresting language to learn but tricky sometimes','coding is life','coding is hard'
+
+]
+    function begin(){
+        if (sentenceIndex>=contentArray.length) {
+            sentenceIndex=0
+            
+        }
+            
+        let writeMe=contentArray[ sentenceIndex ]
+        console.log(writeMe);
+        writeText(writeMe)
+    }
+    begin()
+
+    function writeText(sentence){
+        Autotype.innerHTML += sentence[charIndex]
+        console.log(sentence[charIndex]);
+        charIndex++
+        setTimeout(() => {
+            if(sentence[charIndex]){
+                writeText(sentence)
+            }
+            else{
+                charIndex=0
+                sentenceIndex++
+                setTimeout(() => {
+                    delette()
+                    
+                }, 2000);
+            }
+            
+        }, 50);
+    }
+
+    function delette(){
+        let delt = Autotype.innerHTML.toString()
+        let val=delt.slice(delt,-1)
+
+        Autotype.innerHTML=val
+        setTimeout(() => {
+            if (Autotype.innerHTML=="") {
+                begin()
+            }
+            else{
+                delette()
+            }
+          
+            
+        }, 100);
+    }
+    
+
+
+
+
+
+
+
+
+//     let TypingText =  document.querySelector('.typed-text');
+//     let AutoTyping =  document.querySelector('.TypeCursor');
+
+//     const textArray=[" A Frontend Developer",
+//     "i study at sqi iworoad campus"
+    
+// ]
+// const typingDelay= 200;
+// const erasingDelay=100;
+// const newTextDelay=2000;
+// let textArrayIndex =0
+// let charIndex= 0
+
+// function type() {
+//     if(charIndex < textArray[textArrayIndex].length ) {
+//         // if (!AutoTyping.classList.contains('typing'))AutoTyping.classList.add('typing'); 
+//         TypingText.textContent += textArray[textArrayIndex].charAt(charIndex);
+//         charIndex++;
+//         setTimeout(type, typingDelay);      
+//     }
+//     else{AutoTyping.classList.remove("typing");
+//     setTimeout(erase, newTextDelay);
+//    }
+// }
+// function erase() {
+//     if(charIndex > 0) {
+//         if(!AutoTyping.classList.contains('typing'))AutoTyping.classList.add('typing');
+//         TypingText.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+//         charIndex--;
+//         setTimeout(erase, erasingDelay);
+//       }
+//     else{AutoTyping.classList.remove("typing");
+//     textArrayIndex++;
+//     if(textArrayIndex>=textArray.length) textarrAyIndex=0;
+//     setTimeout(type, typingDelay +1100);
+// }
+// }
+// document.addEventListener("DOMContentLoaded" , function(){
+//     if( textArray.length) setTimeout(type ,newTextDelay +250)
+
+// });
+    
+    
+
+    
+</script>
+</html>
